@@ -5,4 +5,96 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body{
+  background-color: rgb(217, 223, 228);
+}
+.main {
+  height: 100%;
+}
+.web-name {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(50, 50, 50);
+  color: white;
+  gap: 500px;
+  height: 70px;
+  font-size: 1.8rem;
+  align-items: center;
+}
+.web-name svg {
+  height: 40px;
+  width: 40px;
+}
+.title{
+  text-align: center;
+  margin-top: 25px;
+}
+.title h2 {
+  margin-bottom: 10px;
+}
+.title input {
+  width: 400px;
+  border: none;
+  font-size: 2.2rem;
+  border-radius: 5px;
+}
+.feed{
+  width: 1000px;
+  margin: 0 auto;
+}
+.cart-btn{
+  display: block;
+  margin: 0 auto;
+  
+}
+.total-price{
+  width: fit-content;
+  margin-left: auto;
+  margin-right: 200px;
+}
+.shop-content {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  gap: 20px;
+}
+.shop-content li {
+  display: flex;
+}
+.product-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  gap: 10px;
+}
+.product-amount {
+  margin-left: auto;
+}
+.product-amount h3 {
+  display: inline;
+}
+.product-amount input {
+  width: 50px;
+  font-size: 1.7rem;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-left: 10px;
+  
+}
+.product-amount button{
+  display: block;
+  padding: 3px 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
