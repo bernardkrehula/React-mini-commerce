@@ -42,7 +42,6 @@ function App() {
                 <button>+ADD</button>
               </div>
             </li>
-            
           </ul>
         </div>
         <button className='cart-btn'>Go to your cart</button>
