@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const SingleDish = ({dish, addToCart }) => {
     const { id, name, info, price, amount } = dish;
-    const [ getAmount, setAmount ] = useState(dish);
+    const [ getAmount, setAmount ] = useState(1);
 
     
     return (
@@ -15,7 +15,7 @@ const SingleDish = ({dish, addToCart }) => {
                 </div>
                 <div className='product-amount'>
                     <h3>Amount</h3>
-                    <input type="number" defaultValue={amount} onClick={(e) => {setAmount(Number(e.target.value))}}/>
+                    <input min="0" type="number" defaultValue={getAmount} onChange={(e) => {setAmount(Number(e.target.value))}}/>
                     <button onClick={() => {addToCart(id, getAmount)}}>+ADD</button>
                 </div>
             </li>
