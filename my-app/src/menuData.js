@@ -1,4 +1,4 @@
-const cartData = [
+const menuData = [
     {
         id: '1',
         name: 'Sushi',
@@ -30,4 +30,4 @@ const cartData = [
 
 ]
 
-export default cartData;
+export default menuData;

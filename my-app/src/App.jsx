@@ -1,9 +1,26 @@
 import { useState } from 'react'
 import './App.css'
+import menuData from './menuData'
+import SingleDish from './SingleDish'
 
 function App() {
-
-
+  const [ dishes, setDishes ] = useState(menuData)
+ 
+  const totalPrice = dishes.reduce((acc, dish) => acc + parseFloat(dish.price) * parseInt(dish.amount), 0) 
+ 
+  const addToCart = (id, getAmount) => {
+    setDishes(prev => {
+      return prev.map(dish =>  dish.id === id ? sumDishesAmount(dish, getAmount) : dish)
+    }
+    )
+  }
+  const sumDishesAmount = (dish, getAmount) => {
+     return { ...dish, amount: parseInt(getAmount)}
+  }
+  const changeAmount = (id, value) => {
+    setDishes(prev => prev.map(dish => dish.id === id ? {...dish, amount: value} : dish))
+  }
+  //Pitati nemanju moze li se staviti neka univerzalna funkcija find?
   return (
     <>
       <div className='main'>
@@ -17,37 +34,13 @@ function App() {
             <input></input>
           </div>
           <ul className='shop-content'>
-            <li>
-              <div className='product-info'>
-                <h3>Sushi</h3>
-                <h4>Finest fish and veggies</h4>
-                <span>$22.99</span>
-              </div>
-              <div className='product-amount'>
-                <h3>Amount</h3>
-                <input type="number" />
-                <button>+ADD</button>
-              </div>
-            </li>
-            <hr></hr>
-            <li>
-              <div className='product-info'>
-                <h3>Sushi</h3>
-                <h4>Finest fish and veggies</h4>
-                <span>$22.99</span>
-              </div>
-              <div className='product-amount'>
-                <h3>Amount</h3>
-                <input type="number" />
-                <button>+ADD</button>
-              </div>
-            </li>
+            {dishes.map(dish => (<SingleDish key={dish.id} dish={dish} addToCart={addToCart} changeAmount={changeAmount}/>))}
           </ul>
         </div>
         <button className='cart-btn'>Go to your cart</button>
         <div className='total-price'>
           <h4>Total price:</h4>
-          <span>$0.00</span>
+          <span>${totalPrice.toFixed(2)}</span>
         </div>
       </div>
     </>
