@@ -5,6 +5,7 @@ import SingleDish from './SingleDish'
 
 function App() {
   const [ dishes, setDishes ] = useState(menuData)
+  const [ searchInput, setSearchInput ] = useState()
   
   const totalPrice = dishes.reduce((acc, dish) =>  acc + (dish.amount !== 0 ? parseFloat(dish.price) * parseInt(dish.amount) : 0), 0) 
 
@@ -22,6 +23,7 @@ function App() {
   const changeAmount = (id, value) => {
     setDishes(prev => prev.map(dish => dish.id === id ? {...dish, amount: value} : dish))
   }
+
   //Pitati nemanju moze li se staviti neka univerzalna funkcija find?
   return (
     <>
@@ -34,10 +36,12 @@ function App() {
         <div className='feed'>
           <div className='title'>
             <h2>Search product</h2>
-            <input></input>
+            <input onChange={(e) => setSearchInput(e.target.value)}></input>
           </div>
           <ul className='shop-content'>
-            {dishes.map(dish => (<SingleDish key={dish.id} dish={dish} addToCart={addToCart} changeAmount={changeAmount}/>))}
+            {dishes
+            .filter(dish => !searchInput || dish.name.toLowerCase().includes(searchInput.toLowerCase()))
+            .map(dish => (<SingleDish key={dish.id} dish={dish} addToCart={addToCart} changeAmount={changeAmount}/>))}
           </ul>
         </div>
         <button className='cart-btn'>Go to your cart</button>
