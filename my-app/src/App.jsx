@@ -13,9 +13,6 @@ function App() {
   const [ searchInput, setSearchInput ] = useState(0)
   const [ cartPrice, setCartPrice ] = useState(0)
   const [ cartAmount, setCartAmount ] = useState(0)
- /*  const totalPrice = dishes.reduce((acc, dish) =>  acc + (dish.amount !== 0 ? parseFloat(dish.price) * parseInt(dish.amount) : 0), 0) 
- */
-
 
   const addToCart = (id, price, amount) => {
     setCartPrice(prev => prev + parseFloat(price) * parseFloat(amount));/* dishes.reduce((acc, dish) => acc + parseInt(dish.amount), 0) */
@@ -71,7 +68,7 @@ function App() {
             </>  
           }
         </div>
-        <Btn variation="primary">Go to your cart</Btn>
+        <Btn variation="primary" onClick={() => { isCartClicked(false) }}>Go to your cart</Btn>
         <div className='total-price'>
           <h4>Total price:</h4>
           <span>${cartPrice.toFixed(2)}</span>
