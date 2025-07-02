@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import menuData from './menuData'
 import SingleDish from './SingleDish'
+import Btn from './Btn'
 
 function App() {
   const [ dishes, setDishes ] = useState(menuData)
