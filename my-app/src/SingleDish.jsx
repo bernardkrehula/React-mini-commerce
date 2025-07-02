@@ -16,7 +16,7 @@ const SingleDish = ({dish, addToCart }) => {
                 <div className='product-amount'>
                     <h3>Amount</h3>
                     <input min="0" type="number" defaultValue={getAmount} onChange={(e) => {setAmount(Number(e.target.value))}}/>
-                    <button onClick={() => {addToCart(id, getAmount)}}>+ADD</button>
+                    <button onClick={() => {addToCart(id, price, getAmount)}}>+ADD</button>
                 </div>
             </li>
           <hr></hr>

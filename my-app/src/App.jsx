@@ -5,20 +5,23 @@ import SingleDish from './SingleDish'
 
 function App() {
   const [ dishes, setDishes ] = useState(menuData)
+  const [ cart, setCart ] = useState()
   const [ searchInput, setSearchInput ] = useState()
-  
-  const totalPrice = dishes.reduce((acc, dish) =>  acc + (dish.amount !== 0 ? parseFloat(dish.price) * parseInt(dish.amount) : 0), 0) 
+  const [ cartPrice, setCartPrice ] = useState(0)
+  const [ cartAmount, setCartAmount ] = useState(0)
+ /*  const totalPrice = dishes.reduce((acc, dish) =>  acc + (dish.amount !== 0 ? parseFloat(dish.price) * parseInt(dish.amount) : 0), 0) 
+ */
 
-  const totalAmount = dishes.reduce((acc, dish) => acc + parseInt(dish.amount), 0)
-
-  const addToCart = (id, getAmount) => {
+  const addToCart = (id, price, amount) => {
+    setCartPrice(prev => prev + parseFloat(price) * parseFloat(amount));/* dishes.reduce((acc, dish) => acc + parseInt(dish.amount), 0) */
+    setCartAmount(prev => prev + amount)
     setDishes(prev => {
-      return prev.map(dish =>  dish.id === id ? sumDishesAmount(dish, getAmount) : dish)
+      return prev.map(dish =>  dish.id === id ? sumDishesAmount(dish, amount) : dish)
     }
     )
   }
-  const sumDishesAmount = (dish, getAmount) => {
-     return { ...dish, amount: parseInt(getAmount)}
+  const sumDishesAmount = (dish, amount) => {
+     return { ...dish, amount: parseInt(amount)}
   }
   const changeAmount = (id, value) => {
     setDishes(prev => prev.map(dish => dish.id === id ? {...dish, amount: value} : dish))
@@ -31,7 +34,7 @@ function App() {
         <div className='web-name'>
           <h1>Mini Commerce</h1>
           <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 17h-11v-14h-2" /><path d="M6 5l14 1l-1 7h-13" /></svg>
-          <h2>{totalAmount}</h2>
+          <h2>{cartAmount}</h2>
         </div>
         <div className='feed'>
           <div className='title'>
@@ -47,7 +50,7 @@ function App() {
         <button className='cart-btn'>Go to your cart</button>
         <div className='total-price'>
           <h4>Total price:</h4>
-          <span>${totalPrice.toFixed(2)}</span>
+          <span>${cartPrice.toFixed(2)}</span>
         </div>
       </div>
     </>
