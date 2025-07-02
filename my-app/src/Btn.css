@@ -1,0 +1,22 @@
+.primary {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 2rem;
+    background-color: black;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+    margin: 0 auto;
+}
+.ghost {
+    display: block;
+    padding: 3px 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}

@@ -26,6 +26,7 @@ body{
 .web-name svg {
   height: 40px;
   width: 40px;
+  cursor: pointer;
 }
 .title{
   text-align: center;
@@ -89,26 +90,6 @@ body{
   border: 1px solid black;
   margin-left: 10px;
   
-}
-.product-amount button{
-  display: block;
-  padding: 3px 8px;
-  border: none;
-  border-radius: 5px;
-  background-color: black;
-  color: white;
-  cursor: pointer;
-  margin-top: 10px;
-}
-.cart-btn {
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 2rem;
-  background-color: black;
-  color: white;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  cursor: pointer;
 }
 .cart-btn:hover {
   background-color: rgb(37, 37, 37);

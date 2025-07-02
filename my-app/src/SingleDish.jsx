@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Btn from "./Btn";
+import './Btn.css'
 
 const SingleDish = ({dish, addToCart }) => {
     const { id, name, info, price, amount } = dish;
@@ -16,7 +18,7 @@ const SingleDish = ({dish, addToCart }) => {
                 <div className='product-amount'>
                     <h3>Amount</h3>
                     <input min="0" type="number" defaultValue={getAmount} onChange={(e) => {setAmount(Number(e.target.value))}}/>
-                    <button onClick={() => {addToCart(id, price, getAmount)}}>+ADD</button>
+                    <Btn variation="ghost" onClick={() => {addToCart(id, price, getAmount)}}>+ADD</Btn>
                 </div>
             </li>
           <hr></hr>

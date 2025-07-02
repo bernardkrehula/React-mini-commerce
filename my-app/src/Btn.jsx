@@ -1,7 +1,8 @@
 
-const Btn = ({ onClick, children }) => {
+
+const Btn = ({ onClick, variation, children }) => {
     return (
-        <button className="cart-btn" onClick={onClick}>
+        <button className={variation} onClick={onClick}>
             {children}
         </button>
     )
