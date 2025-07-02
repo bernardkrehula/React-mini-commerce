@@ -1,8 +1,17 @@
 import './App.css'
+import Btn from './Btn';
+import './Btn.css'
 
-const ShoppingCart = ({cart}) => {
-     if (!cart || cart.length === 0) return <p>Cart is empty.</p>;
+const ShoppingCart = ({cart, changeCartAmount}) => {
+     if (!cart || cart.length === 0) return <p className='empty-cart'>Cart is empty...</p>;
 
+    const increase = (id, amount) => {
+        changeCartAmount(id, amount + 1);
+    };
+
+  const decrease = (id, amount) => {
+    changeCartAmount(id, amount - 1);
+  };
   return (
     <>
     <ul className='shop-content'>
@@ -13,6 +22,11 @@ const ShoppingCart = ({cart}) => {
                 <h3>{name}</h3>
                 <h4>{info}</h4>
                 <span>${price}</span>
+            </div>
+            <div className='product-amount'>
+                <button onClick={() => decrease(id, amount)}>-</button>
+                <span style={{ margin: "0 10px" }}>{amount}</span>
+                <button onClick={() => increase(id, amount)}>+</button>
             </div>
             </li>
             <hr></hr>

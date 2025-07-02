@@ -43,6 +43,17 @@ function App() {
   const changeAmount = (id, value) => {
     setDishes(prev => prev.map(dish => dish.id === id ? {...dish, amount: value} : dish))
   }
+  const changeCartAmount = (id, newAmount) => {
+    setCart(prevCart => 
+      prevCart
+        .map(item => 
+          item.id === id 
+            ? { ...item, amount: newAmount } 
+            : item
+        )
+        .filter(item => item.amount > 0) 
+  );
+};
 
   //Pitati nemanju moze li se staviti neka univerzalna funkcija find?
   return (
@@ -54,7 +65,7 @@ function App() {
           <h2>{cartAmount}</h2>
         </div>
         <div className='feed'>
-          {getCartClick ? <ShoppingCart cart={cart}/> : 
+          {getCartClick ? <ShoppingCart cart={cart} changeCartAmount={changeCartAmount}/> : 
           <>
             <div className='title'>
               <h2>Search product</h2>
@@ -68,7 +79,7 @@ function App() {
             </>  
           }
         </div>
-        <Btn variation="primary" onClick={() => { isCartClicked(false) }}>Go to your cart</Btn>
+        <Btn variation="primary" onClick={() => { isCartClicked(prev => !prev) }}>{getCartClick ? 'Back to Products' : 'Go to your cart'}</Btn>
         <div className='total-price'>
           <h4>Total price:</h4>
           <span>${cartPrice.toFixed(2)}</span>

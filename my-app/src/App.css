@@ -15,7 +15,6 @@ body{
 }
 .web-name {
   display: flex;
-  justify-content: center;
   background-color: rgb(50, 50, 50);
   color: white;
   gap: 500px;
@@ -27,6 +26,9 @@ body{
   height: 40px;
   width: 40px;
   cursor: pointer;
+}
+.web-name h2 {
+
 }
 .title{
   text-align: center;
@@ -101,4 +103,10 @@ body{
   border-radius: 10px;
   padding: 10px 20px;
   margin-bottom: 50px;
+}
+.empty-cart {
+  font-size: 4rem;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
